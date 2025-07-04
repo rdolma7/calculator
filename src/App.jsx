@@ -1,7 +1,9 @@
+import { useState } from "react";
 import "./App.css";
 import Button from "./components/Button";
 
 function App() {
+  const [initialValue, setValue]=useState(null);
   const buttonValues = [
     "AC",
     "+/-",
@@ -23,13 +25,20 @@ function App() {
     ".",
     "=",
   ];
+  const handleClick=(button)=>{
+    console.log(button)
+if(typeof button==='number'){
+  setValue(button);
+  }else{
+    console.log('not a number')
+  }
+
+  };
   const mappedButtons=buttonValues.map((buttonValue, index) => (
-          <button key={index} className="btn">
-            {buttonValue}
-          </button>
-        ))
-  return (
-    <>
+          <Button  key={index} buttonValue={buttonValue} onClick={handleClick}/>
+        ));
+        return (
+        <>
     <Button />
       <div className="calculator-container">
         <div className="window-controls">
@@ -37,7 +46,7 @@ function App() {
           <span className="dot yellow"></span>
           <span className="dot green"></span>
         </div>
-        <div className="display">0</div>
+        <div className="display">{initialValue}</div>
         {mappedButtons}
         <div className="buttons"></div>
       </div>

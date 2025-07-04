@@ -1,8 +1,9 @@
-function Button () {
-    return ( 
-        <>
-        </>
-    );
-}
+const Button= ({buttonValue, onClick}) =>{
+    const clickHandler=()=>onClick(buttonValue);
 
-export default Button ;
+    return <button className='btn' onClick={clickHandler}>
+        {buttonValue} 
+        </ button>
+};
+
+export default Button;
