@@ -1,16 +1,44 @@
 import "./App.css";
+import Button from "./components/Button";
 
 function App() {
+  const buttonValues = [
+    "AC",
+    "+/-",
+    "%",
+    "/",
+    7,
+    8,
+    9,
+    "X",
+    4,
+    5,
+    6,
+    "-",
+    1,
+    2,
+    3,
+    "+",
+    0,
+    ".",
+    "=",
+  ];
+  const mappedButtons=buttonValues.map((buttonValue, index) => (
+          <button key={index} className="btn">
+            {buttonValue}
+          </button>
+        ))
   return (
     <>
+    <Button />
       <div className="calculator-container">
         <div className="window-controls">
           <span className="dot red"></span>
           <span className="dot yellow"></span>
           <span className="dot green"></span>
         </div>
-        <div className="display">display</div>
-        {/* calc logic */}
+        <div className="display">0</div>
+        {mappedButtons}
         <div className="buttons"></div>
       </div>
     </>
